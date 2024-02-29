@@ -62,12 +62,11 @@ def asignaValor(formula):
 
 
 def variables_negativas(formula_con_val):
-#Auxiliar para la fase Verificadora
+#Auxiliar para hacer la Fase Verificadora
 #Recorre la formula donde cada variable ya tiene un valor asignado,
 #pero hay casos en los que podemos tener en nuestra clausula un "-x"
 #donde si x es 1, entonces -x es 0, en esta funcion hacemos esa conversion.
 
-    #Para convertir a lista.
     #Convertimos a lista porque asi es mas facil hacer la conversion que queremos.
     lista = formula_con_val.split()
 
@@ -86,12 +85,27 @@ def variables_negativas(formula_con_val):
     cadena = ' '.join(str(j) for j in lista) 
     return cadena
 
-#def para_or(formula):
-##
+#def para_or(cadena):
+##Fase Verificadora, para los or de la formula.
+##En la tabla de verdad de or, solo tenemos valores false cuando todas nuestras
+##variables son false. En el resto de los casos es true. 
 #
-#    cadena = str(formula)
-#    clausulas = cadena.split('*')
+#    #Vamos a dejar de lado el and * por esta funcion.
+#    bye_simbolo_and = cadena.split(' * ')
+#
+#    bye_simbolo_or = bye_simbolo_and.split(' + ')
+#
+#    return bye_simbolo_or
 
+def para_or(cadena):
+#Fase Verificadora, para los or de la formula.
+#En la tabla de verdad de or, solo tenemos valores false cuando todas nuestras
+#variables son false. En el resto de los casos es true. 
+
+    #Vamos a dejar de lado el and * por esta funcion.
+    clausulas = cadena.split(' * ')
+
+    return clausulas
 
 def main(formula):
 #Funcion main para mandar a llamar todo, ordenado.
@@ -113,3 +127,6 @@ def main(formula):
     
 
 main(formula)
+
+p = para_or('( 0 + 1 + 0 ) * ( 1 + 0 + 1 ) * ( 1 + 0 + 0 ) * ( 0 + 0 + 1 )')
+print(str(p))
