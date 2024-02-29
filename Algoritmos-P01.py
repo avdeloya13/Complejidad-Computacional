@@ -2,16 +2,16 @@ import sys
 import random
 
 """
-Complejidad Computacional.
-Algoritmos No Deterministicos.
-Alumna: Ana Valeria Deloya Andrade
+Algoritmos No Deterministicos
+3 - SAT
+Author: Ana Valeria Deloya Andrade
 """
 
 archivo = sys.argv[1]
-#Abrimos el archivo que contiene la formula booleana
+#Abrimos el archivo que contiene la formula booleana.
 archivo = open(archivo)
 
-#Leemos el archivo y lo asignamos a una variable formula
+#Leemos el archivo y lo asignamos a una variable formula.
 formula = archivo.readline()
 
 
@@ -27,6 +27,7 @@ def clausulas_limite(formula):
         if i == ')':
             parentesis += 1
 
+    #Si pasa sus cotas minimas y maximas devuelve false, si no true.
     if parentesis < 6 or parentesis > 20:
         return False
     else: 
@@ -34,14 +35,18 @@ def clausulas_limite(formula):
 
 
 def asignaValor(formula):
-#Fase Adivinadora
-#Recorre la formula para asignar un valor a cada variable
+#Fase Adivinadora.
+#Recorre la formula para asignar un valor a cada variable.
 
+    #L valores random que tendran las variables.
     var_x = random.randint(0,1)
     var_y = random.randint(0,1)
     var_z = random.randint(0,1)
+
+    #Nueva cadena que al final va a contener la formula con sus valores random asignados.
     con_valores = ''
 
+    #Recorremos la formula y asignamos los valores.
     for i in formula:
         if i == 'x':
             con_valores += str(var_x)
@@ -52,35 +57,56 @@ def asignaValor(formula):
         else:
             con_valores += i 
     
+    #Regresa la cadena con los valores asignados.
     return con_valores
 
 
-#def variables_negativas(f):
-##Auxiliar para la fase Verificadora
-##Recorre la formula donde cada variable ya tiene un valor asginado,
-##pero hay casos en los que podemos tener en nuestra clausula un "-x"
-##donde si x es 1, entonces -x es 0, en esta funcion hacemos esa conversion
+def variables_negativas(formula_con_val):
+#Auxiliar para la fase Verificadora
+#Recorre la formula donde cada variable ya tiene un valor asignado,
+#pero hay casos en los que podemos tener en nuestra clausula un "-x"
+#donde si x es 1, entonces -x es 0, en esta funcion hacemos esa conversion.
+
+    #Para convertir a lista.
+    #Convertimos a lista porque asi es mas facil hacer la conversion que queremos.
+    lista = formula_con_val.split()
+
+    #Recorremos y hacemos la conversion.
+    for i in range(len(lista)):
+        if lista[i] == '-1':
+            lista[i] = 0
+
+        elif lista[i] == '-0':
+            lista[i] = 1
+    
+    #Lo siguiente es mas que nada para que se vea bonito al imprimirlo en terminal.
+    #Vamos a ir convirtiendo los elementos de la lista de nuevo a string.
+
+    #Iterando en join, convirtiendo a str y agregando un espacio en blanco ' ' entre los elementos.
+    cadena = ' '.join(str(j) for j in lista) 
+    return cadena
+
+#def para_or(formula):
+##
 #
-#    for i in range(len(f)):
-#        if f[i] == '-':
-#            if f[i+1] == 0:
-#                f[i+1] = 1
-#            else:
-#                f[i+1] = 0
-#    
-#    return f
+#    cadena = str(formula)
+#    clausulas = cadena.split('*')
 
 
 def main(formula):
+#Funcion main para mandar a llamar todo, ordenado.
+
     clausulas = clausulas_limite(formula)
 
     if clausulas == True:
         print('Fase Adivinadora')
-        val = asignaValor(formula)
-        print(val)
+        av = asignaValor(formula)
+        print(av)
 
         print('Fase Verificadora')
-       # print(variables_negativas(val))
+        vn = variables_negativas(av)
+        print('Nos encargamos de los NOT:')
+        print(str(vn))
 
     else: 
         print('Numero de clausulas invalido, deben ser de 3 a 10')
