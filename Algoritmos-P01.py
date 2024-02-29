@@ -85,27 +85,18 @@ def variables_negativas(formula_con_val):
     cadena = ' '.join(str(j) for j in lista) 
     return cadena
 
-#def para_or(cadena):
-##Fase Verificadora, para los or de la formula.
-##En la tabla de verdad de or, solo tenemos valores false cuando todas nuestras
-##variables son false. En el resto de los casos es true. 
-#
-#    #Vamos a dejar de lado el and * por esta funcion.
-#    bye_simbolo_and = cadena.split(' * ')
-#
-#    bye_simbolo_or = bye_simbolo_and.split(' + ')
-#
-#    return bye_simbolo_or
-
 def para_or(cadena):
 #Fase Verificadora, para los or de la formula.
 #En la tabla de verdad de or, solo tenemos valores false cuando todas nuestras
 #variables son false. En el resto de los casos es true. 
 
-    #Vamos a dejar de lado el and * por esta funcion.
-    clausulas = cadena.split(' * ')
+    #Vamos a dejar de lado el and *
+    bye_simbolo_and = ' '.join(str(j) for j in (cadena.split(' * ')))
 
-    return clausulas
+    #Haremos el or pero ya no necesitamos el simbolo +
+    bye_simbolo_or = ' '.join(str(j) for j in (bye_simbolo_and.split(' + ')))
+
+    return bye_simbolo_or
 
 def main(formula):
 #Funcion main para mandar a llamar todo, ordenado.
