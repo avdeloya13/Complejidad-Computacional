@@ -54,40 +54,33 @@ def asignaValor(formula):
     
     return con_valores
 
-#print(asignaValor(formula))
 
-#def variables_negativas(formula):
-#Auxiliar para la fase Verificadora
-#Recorre la formula donde cada variable ya tiene un valor asginado,
-#pero hay casos en los que podemos tener en nuestra clausula un "-x"
-#donde si x es 1, entonces -x es 0, en esta funcion hacemos esa conversion
-#    conversion = ''
+#def variables_negativas(f):
+##Auxiliar para la fase Verificadora
+##Recorre la formula donde cada variable ya tiene un valor asginado,
+##pero hay casos en los que podemos tener en nuestra clausula un "-x"
+##donde si x es 1, entonces -x es 0, en esta funcion hacemos esa conversion
 #
-#    for i in formula:
-#        if i == -:
-#
-#            if i+1 == 1:
-#                i+1 = 0
-#                conversion + i 
-#                #conversion + i+1
-#            else: 
-#                i+1 = 1
-#                conversion + i 
-#                #conversion + i+1
-#
-#        else:
-#            conversion + i 
+#    for i in range(len(f)):
+#        if f[i] == '-':
+#            if f[i+1] == 0:
+#                f[i+1] = 1
+#            else:
+#                f[i+1] = 0
 #    
-#    return conversion
+#    return f
+
 
 def main(formula):
     clausulas = clausulas_limite(formula)
 
     if clausulas == True:
         print('Fase Adivinadora')
-        print(asignaValor(formula))
+        val = asignaValor(formula)
+        print(val)
 
         print('Fase Verificadora')
+       # print(variables_negativas(val))
 
     else: 
         print('Numero de clausulas invalido, deben ser de 3 a 10')
