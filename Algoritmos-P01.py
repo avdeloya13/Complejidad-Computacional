@@ -15,6 +15,24 @@ archivo = open(archivo)
 formula = archivo.readline()
 
 
+def clausulas_limite(formula):
+#Como deben ser de 3 a 10 clausulas, entonces esta funcion va a 
+#contar el numero de parentesis que deben ser entre 6 y 20
+    parentesis = 0
+
+    for i in formula:
+        if i == '(':
+            parentesis += 1
+
+        if i == ')':
+            parentesis += 1
+
+    if parentesis < 6 or parentesis > 20:
+        return False
+    else: 
+        return True
+
+
 def asignaValor(formula):
 #Fase Adivinadora
 #Recorre la formula para asignar un valor a cada variable
@@ -36,7 +54,7 @@ def asignaValor(formula):
     
     return con_valores
 
-print(asignaValor(formula))
+#print(asignaValor(formula))
 
 #def variables_negativas(formula):
 #Auxiliar para la fase Verificadora
@@ -62,6 +80,17 @@ print(asignaValor(formula))
 #    
 #    return conversion
 
+def main(formula):
+    clausulas = clausulas_limite(formula)
 
+    if clausulas == True:
+        print('Fase Adivinadora')
+        print(asignaValor(formula))
 
+        print('Fase Verificadora')
 
+    else: 
+        print('Numero de clausulas invalido, deben ser de 3 a 10')
+    
+
+main(formula)
