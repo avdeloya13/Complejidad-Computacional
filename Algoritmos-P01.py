@@ -91,10 +91,12 @@ def para_or(cadena):
 #variables son false. En el resto de los casos es true. 
 
     nueva = ''
-    false = '(000)'
 
-    #Para eliminar espacios, simbolos + y *
+    #Para eliminar espacios, simbolos *
     for i in cadena:
+        if i == '*':
+            nueva += i 
+
         if i == '(':
             nueva += ' (' 
 
@@ -107,6 +109,7 @@ def para_or(cadena):
     nueva = nueva.replace("(000)", "0")
     nueva = nueva.replace("(001)", "1")
     nueva = nueva.replace("(010)", "1")
+    nueva = nueva.replace("(011)", "1")
     nueva = nueva.replace("(101)", "1")
     nueva = nueva.replace("(100)", "1")
     nueva = nueva.replace("(110)", "1")
@@ -121,14 +124,20 @@ def main(formula):
     clausulas = clausulas_limite(formula)
 
     if clausulas == True:
+
         print('Fase Adivinadora')
         av = asignaValor(formula)
         print(av)
 
         print('Fase Verificadora')
+
         vn = variables_negativas(av)
         print('Nos encargamos de los NOT:')
         print(str(vn))
+
+        o = para_or(vn)
+        print('Resolvemos los OR:')
+        print(str(o))
 
     else: 
         print('Numero de clausulas invalido, deben ser de 3 a 10')
@@ -137,4 +146,4 @@ def main(formula):
 main(formula)
 
 p = para_or('( 0 + 1 + 0 ) * ( 1 + 0 + 1 ) * ( 1 + 0 + 0 ) * ( 0 + 0 + 1 )')
-print(str(p))
+#print(str(p))
