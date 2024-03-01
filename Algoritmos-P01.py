@@ -67,7 +67,6 @@ def variables_negativas(formula_con_val):
 #pero hay casos en los que podemos tener en nuestra clausula un "-x"
 #donde si x es 1, entonces -x es 0, en esta funcion hacemos esa conversion.
 
-    #Convertimos a lista porque asi es mas facil hacer la conversion que queremos.
     lista = formula_con_val.split()
 
     #Recorremos y hacemos la conversion.
@@ -85,18 +84,36 @@ def variables_negativas(formula_con_val):
     cadena = ' '.join(str(j) for j in lista) 
     return cadena
 
+
 def para_or(cadena):
 #Fase Verificadora, para los or de la formula.
 #En la tabla de verdad de or, solo tenemos valores false cuando todas nuestras
 #variables son false. En el resto de los casos es true. 
 
-    #Vamos a dejar de lado el and *
-    bye_simbolo_and = ' '.join(str(j) for j in (cadena.split(' * ')))
+    nueva = ''
+    false = '(000)'
 
-    #Haremos el or pero ya no necesitamos el simbolo +
-    bye_simbolo_or = ' '.join(str(j) for j in (bye_simbolo_and.split(' + ')))
+    #Para eliminar espacios, simbolos + y *
+    for i in cadena:
+        if i == '(':
+            nueva += ' (' 
 
-    return bye_simbolo_or
+        elif i.isdigit():
+            nueva += i 
+
+        elif i == ')':
+            nueva += ') '
+
+    nueva = nueva.replace("(000)", "0")
+    nueva = nueva.replace("(001)", "1")
+    nueva = nueva.replace("(010)", "1")
+    nueva = nueva.replace("(101)", "1")
+    nueva = nueva.replace("(100)", "1")
+    nueva = nueva.replace("(110)", "1")
+    nueva = nueva.replace("(111)", "1")
+
+    return nueva
+
 
 def main(formula):
 #Funcion main para mandar a llamar todo, ordenado.
