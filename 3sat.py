@@ -21,6 +21,7 @@ def clausulas_limite(formula):
     parentesis = 0
 
     for i in formula:
+
         if i == '(':
             parentesis += 1
 
@@ -48,41 +49,56 @@ def asignaValor(formula):
 
     #Recorremos la formula y asignamos los valores.
     for i in formula:
+
         if i == 'x':
             con_valores += str(var_x)
+
         elif i == 'y':
             con_valores += str(var_y)
+
         elif i == 'z':
             con_valores += str(var_z)
+
         else:
             con_valores += i 
     
     #Regresa la cadena con los valores asignados.
     return con_valores
 
-
-def variables_negativas(formula_con_val):
+#Primera version de la funcion
+#def variables_negativas(formula_con_val):
 #Auxiliar para hacer la FASE VERIFICADORA
 #Recorre la formula donde cada variable ya tiene un valor asignado,
 #pero hay casos en los que podemos tener en nuestra clausula un "-x"
 #donde si x es 1, entonces -x es 0, en esta funcion hacemos esa conversion.
+#    
+#    #split() puede usarse para pasar a lista una cadena
+#    #lo pasamos a lista para que sea mas facil la conversion / sustitucion que queremos hacer
+#    lista = formula_con_val.split() 
+#
+#    #Recorremos y hacemos la conversion.
+#    for i in range(len(lista)):
+#        if lista[i] == '-1':
+#            lista[i] = 0
+#
+#        if lista[i] == '-0':
+#            lista[i] = 1
+#    
+#    return lista
 
-    lista = formula_con_val.split()
+def variables_negativas(formula_con_val):
+#Auxiliar para hacer la FASE VERIFICADORA
+#Ya tiene un valor asignado, pero hay casos en los que podemos tener en nuestra clausula un "-x"
+#donde si x es 1, entonces -x es 0, en esta funcion hacemos esa conversion.
 
-    #Recorremos y hacemos la conversion.
-    for i in range(len(lista)):
-        if lista[i] == '-1':
-            lista[i] = 0
+    #Recorremos y hacemos la conversion / sustitucion
+    #Lo que pasa en cada replace() es que recorre la cadena y hace la sustitucion a medida que va avanzando
+    formula_con_val = formula_con_val.replace("-1", "0")
 
-        elif lista[i] == '-0':
-            lista[i] = 1
-    
-    #Lo siguiente es mas que nada para que se vea bonito al imprimirlo en terminal.
-    #Vamos a ir convirtiendo los elementos de la lista de nuevo a string.
+    #Aqui la cadena ya no tiene -1, fueron ya sustituidos por 0. Ahora recorre para sustituir los -0 con 1
+    formula_con_val = formula_con_val.replace("-0", "1")
 
-    #Iterando en join, convirtiendo a str y agregando un espacio en blanco ' ' entre los elementos.
-    cadena = ' '.join(str(j) for j in lista) 
-    return cadena
+    return formula_con_val
 
 
 def para_or(cadena):
@@ -94,6 +110,7 @@ def para_or(cadena):
 
     #Para eliminar espacios, simbolos *
     for i in cadena:
+
         if i == '*':
             nueva += i 
 
@@ -106,6 +123,7 @@ def para_or(cadena):
         elif i == ')':
             nueva += ') '
 
+    #replace() lo que hace es que recorrer la cadena nueva y hace la sustitucion conforme avanza
     nueva = nueva.replace("(000)", "0")
     nueva = nueva.replace("(001)", "1")
     nueva = nueva.replace("(010)", "1")
@@ -117,18 +135,26 @@ def para_or(cadena):
 
     return nueva
 
+
 def para_and(cadena):
 #FASE VERIFICADORA, se encarga de los and de la formula.
 #En la tabla de verdad de and, solo tenemos valor true cuando todas nuestras
 #variables son true. En el resto de los casos es false. 
 
+    #La logica para esta operacion and es hacerla de dos en dos,es decir, si tienes por ejemplo v and v and f debes
+    #hacer primero la operacion con dos variables y el valor que obtengas lo usas para hacer la operacion con 
+    #la variable sobrante, v and v and f => v and f => f hasta que al final te quedas con un solo valor.
+    #Entonces queremos que poco a poco se vayan reemplazando los valores hasta quedarnos con un valor, por eso el while
+    #tiene esa condicion.
     while '1 * 1' in cadena or '1 * 0' in cadena or '0 * 1' in cadena or '0 * 0' in cadena:
+
         cadena = cadena.replace(" 1 * 1 ", " 1 ")
         cadena = cadena.replace(" 1 * 0 ", " 0 ")
         cadena = cadena.replace(" 0 * 1 ", " 0 ")
         cadena = cadena.replace(" 0 * 0 ", " 0 ")
 
     return cadena
+
 
 def main(formula):
 #Funcion main para mandar a llamar todo, ordenado.
@@ -160,6 +186,3 @@ def main(formula):
     
 
 main(formula)
-
-#p = para_or('( 0 + 1 + 0 ) * ( 1 + 0 + 1 ) * ( 1 + 0 + 0 ) * ( 0 + 0 + 1 )')
-#print(str(p))
