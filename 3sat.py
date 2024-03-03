@@ -35,7 +35,7 @@ def clausulas_limite(formula):
 
 
 def asignaValor(formula):
-#Fase Adivinadora.
+#FASE ADIVINADORA.
 #Recorre la formula para asignar un valor a cada variable.
 
     #L valores random que tendran las variables.
@@ -62,7 +62,7 @@ def asignaValor(formula):
 
 
 def variables_negativas(formula_con_val):
-#Auxiliar para hacer la Fase Verificadora
+#Auxiliar para hacer la FASE VERIFICADORA
 #Recorre la formula donde cada variable ya tiene un valor asignado,
 #pero hay casos en los que podemos tener en nuestra clausula un "-x"
 #donde si x es 1, entonces -x es 0, en esta funcion hacemos esa conversion.
@@ -86,7 +86,7 @@ def variables_negativas(formula_con_val):
 
 
 def para_or(cadena):
-#Fase Verificadora, para los or de la formula.
+#FASE VERIFICADORA, se encarga de los or de la formula.
 #En la tabla de verdad de or, solo tenemos valores false cuando todas nuestras
 #variables son false. En el resto de los casos es true. 
 
@@ -117,6 +117,18 @@ def para_or(cadena):
 
     return nueva
 
+def para_and(cadena):
+#FASE VERIFICADORA, se encarga de los and de la formula.
+#En la tabla de verdad de and, solo tenemos valor true cuando todas nuestras
+#variables son true. En el resto de los casos es false. 
+
+    while '1 * 1' in cadena or '1 * 0' in cadena or '0 * 1' in cadena or '0 * 0' in cadena:
+        cadena = cadena.replace(" 1 * 1 ", " 1 ")
+        cadena = cadena.replace(" 1 * 0 ", " 0 ")
+        cadena = cadena.replace(" 0 * 1 ", " 0 ")
+        cadena = cadena.replace(" 0 * 0 ", " 0 ")
+
+    return cadena
 
 def main(formula):
 #Funcion main para mandar a llamar todo, ordenado.
@@ -139,11 +151,15 @@ def main(formula):
         print('Resolvemos los OR:')
         print(str(o))
 
+        a = para_and(o)
+        print('Y finalmente los AND:')
+        print(str(a))
+
     else: 
         print('Numero de clausulas invalido, deben ser de 3 a 10')
     
 
 main(formula)
 
-p = para_or('( 0 + 1 + 0 ) * ( 1 + 0 + 1 ) * ( 1 + 0 + 0 ) * ( 0 + 0 + 1 )')
+#p = para_or('( 0 + 1 + 0 ) * ( 1 + 0 + 1 ) * ( 1 + 0 + 0 ) * ( 0 + 0 + 1 )')
 #print(str(p))
