@@ -13,7 +13,7 @@ Debemos tener una formula booleana en un archivo de texto, es importante que la 
 
 ( x + -y + z ) * ( -x + y + -z ) * ( -x + y + z ) * ( x + y + -z )
 
-Con cada elemento sepadado por un espacio en blanco. El nombre de nuestro archivo es "3sat_archivo.txt"
+Con cada elemento sepadado por un espacio en blanco. El nombre del archivo es "3sat_archivo.txt"
 
 Para compilar y ejecutar:
 
