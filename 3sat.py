@@ -143,7 +143,7 @@ def para_and(cadena):
 
     #La logica para esta operacion and es hacerla de dos en dos,es decir, si tienes por ejemplo v and v and f debes
     #hacer primero la operacion con dos variables y el valor que obtengas lo usas para hacer la operacion con 
-    #la variable sobrante, v and v and f => v and f => f hasta que al final te quedas con un solo valor.
+    #la variable sobrante, v and v and f... => v and f... => f hasta que al final te quedas con un solo valor.
     #Entonces queremos que poco a poco se vayan reemplazando los valores hasta quedarnos con un valor, por eso el while
     #tiene esa condicion.
     while '1 * 1' in cadena or '1 * 0' in cadena or '0 * 1' in cadena or '0 * 0' in cadena:
