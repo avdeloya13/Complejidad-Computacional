@@ -6,6 +6,7 @@ Algoritmos No Deterministicos
 3 - SAT
 Author: Ana Valeria Deloya Andrade
 """
+#PARA LA LECTURA DEL ARCHIVO:
 
 archivo = sys.argv[1]
 #Abrimos el archivo que contiene la formula booleana.
@@ -16,8 +17,10 @@ formula = archivo.readline()
 
 
 def clausulas_limite(formula):
+#ESPECIFICACIONES, revisamos que se cumpla las restricciones que pide la practica.
 #Como deben ser de 3 a 10 clausulas, entonces esta funcion va a 
 #contar el numero de parentesis que deben ser entre 6 y 20
+
     parentesis = 0
 
     for i in formula:
