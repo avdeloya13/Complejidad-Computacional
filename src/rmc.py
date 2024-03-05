@@ -60,16 +60,17 @@ def trayectoria():
 #a arrojar un valor aleatorio entre 0 y 1 es que vamos a decidir si incluir o no a la arista en la trayectoria.
 #Si es 1 la incluye en la trayectoria y si es 0 no.
 
-    trayect = []
+    seleccion = []
 
+    #Seleccionamos las aristas para la trayectoria
     for i in aristas:
-
+        #Para que la seleccion sea aleatoria
         nd_choice = random.randint(0,1)
-
+        #Agregamos el elemento a la trayectoria
         if nd_choice == 1:
-            trayect.append(i)
+            seleccion.append(i)
     
-    return trayect
+
 
 
 def main():
@@ -83,8 +84,8 @@ def main():
     else: 
         print('Grafica invalida')
 
-print(str(vertices))
-print(str(k))
-print(aristas)
-print(num_ar)
+#print(str(vertices))
+#print(str(k))
+#print(aristas)
+#print(num_ar)
 print(trayectoria())
