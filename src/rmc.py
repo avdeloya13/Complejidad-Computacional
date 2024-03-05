@@ -72,7 +72,7 @@ def trayectoria():
     return trayect
 
 
-def main(formula):
+def main():
 #Funcion main para mandar a llamar todo, ordenado.
 
     esp = aristas_y_vertices()
