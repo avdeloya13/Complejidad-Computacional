@@ -7,8 +7,8 @@ Alumna: Ana Valeria Deloya Andrade
 Este problema se encuentra en el archivo "rmc.py" dentro de la carpeta src.
 
 En el archivo de texto "rmc_archivo.txt" se encuentra la gráfica, la primer línea contiene a los vértices, en la segunda
-va a estar el valor k, y es a partir de la tercera línea que tenemos las aristas de la forma "1,2,3" donde los primeros dos elementos 
-son los vértices que la conforman y el tercer elemento es el peso de la arista.
+va a estar el valor k, y es a partir de la tercera línea que tenemos las aristas de la forma "1,2" donde estos dos elementos 
+son los vértices que la conforman.
 
 Para compilar y ejecutar:
 
