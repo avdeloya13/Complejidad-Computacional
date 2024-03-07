@@ -80,16 +80,16 @@ def arreglo(trayectoria):
 #La logica para la fase verificadora es la siguiente, tenemos una trayectoria que nos dio la fase adivinadora
 #por ejemplo '5,1', '1,2', '2,6' que en el codigo la tendriamos como: trayectoria = ['5','1','1','2','2','6'] 
 #En general lo que queremos es comparar el segundo y tercer elemento de la lista, de ahi seguir con el cuarto y quinto
-#y asi sucesivamente. Por lo que el primer elemento no lo vamos a ocupar para esta comparacion y tampoco el ultimo, por lo que
+#y asi sucesivamente. Por lo que el primer elemento no lo vamos a ocupar para esta comparacion y tampoco el ultimo, asi que
 #los eliminamos de la lista para facilitar la comparacion. 
 
-#Si al comparar dos aristas resultan ser iguales, contamos esas dos aristas y por eso a distancia se le va sumando de dos en dos.
+#Si al comparar dos vertices resultan ser iguales, contamos esas dos aristas y por eso a distancia se le va sumando de dos en dos.
 #Una vez que se hizo la comparacion que ha resultado exitosa, eliminamos esos vertices de la lista y comparamos los que siguen.
 #Vamos comparando y eliminando de dos en dos, ese es el motivo de la condicion en el while.
 
 #Si la comparacion no resulta ser exitosa entonces salimos del while.
 
-#Ahora, en el aspecto de la distancia, nos piden que la distancia de la uv-trayectoria sea el numero de vertices sin contar a u pero si a v.
+#Ahora, en el aspecto de la distancia, nos piden que la distancia de la uv-trayectoria sea el numero de vertices sin contar u pero si v.
 #Como eliminamos v de la lista trayectoria para facilitar el conteo, jamas va a contarla por lo que inicializamos a la variable distancia = 1
 
 #Como puede pasar que nuestra primera comparacion no sea exitosa, distancia va a ser 1 entonces ese es el porque de esa parte en la condicion del if
@@ -140,11 +140,11 @@ def main():
         print('Grafica invalida')
 
 
-#Ejemplo de una trayectoria que arroja False en la fase verificadora
-f = ['8,9', '7,8', '6,7', '7,4', '5,3', '10,9', '3,6', '1,2']
+#Ejemplo de una trayectoria que devuelve False en la fase verificadora
+f = ['8','9','7','8','6','7','7','4','5','3','10','9','3','6','1','2']
 #print(arreglo(f))
 
-#Ejemplo de una trayectoria que arroja True en la fase verificadora
+#Ejemplo de una trayectoria que devuelve True en la fase verificadora
 v = ['5','1','1','2','2','6']
 #print(arreglo(v))
 
