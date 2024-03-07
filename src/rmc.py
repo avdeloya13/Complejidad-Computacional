@@ -56,7 +56,7 @@ def aristas_y_vertices():
 
 
 def trayectoria():
-#FASE ADIVINADORA.
+#FASE ADIVINADORA, regresa una trayectoria como propuesta a solucion del problema.
 #Revisamos una a una las aristas de la grafica G, y por medio de la variable nd_choice que va
 #a arrojar un valor aleatorio entre 0 y 1 es que vamos a decidir si incluir o no a la arista en la trayectoria.
 #Si es 1 la incluye en la trayectoria y si es 0 no.

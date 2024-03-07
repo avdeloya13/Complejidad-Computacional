@@ -68,7 +68,7 @@ def asignaValor(formula):
     #Regresa la cadena con los valores asignados.
     return con_valores
 
-#Primera version de la funcion
+#Primera version, funciona pero en general complicaba la implementacion.
 #def variables_negativas(formula_con_val):
 #Auxiliar para hacer la FASE VERIFICADORA
 #Recorre la formula donde cada variable ya tiene un valor asignado,
