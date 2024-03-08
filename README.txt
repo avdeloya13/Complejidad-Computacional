@@ -14,8 +14,8 @@ Para compilar y ejecutar:
 
 	python3 rmc.py rmc_archivo.txt
 
-Por como es el formato en el que nos pasan las aristas en el achivo .txt podemos ver una trayectoria como '5,1', '1,2', '2,6'
-sin embargo por simplicidad al momento de implementar el codigo, estas seran impresas en terminal de esta forma: ['5','1','1','2','2','6'] 
+Por como es el formato en el que nos pasan las aristas en el achivo .txt podemos ver una trayectoria como ['5,1', '1,2', '2,6']
+sin embargo por simplicidad al momento de implementar la fase verificadora, se verá en terminal de esta forma: ['5','1','1','2','2','6'] 
 
 * 3-SAT
 

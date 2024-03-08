@@ -68,18 +68,19 @@ def asignaValor(formula):
     #Regresa la cadena con los valores asignados.
     return con_valores
 
+
 #Primera version, funciona pero se me ocurrieron otras cosas y ya no lo ocupe.
 #def variables_negativas(formula_con_val):
 #Auxiliar para hacer la FASE VERIFICADORA
 #Recorre la formula donde cada variable ya tiene un valor asignado,
 #pero hay casos en los que podemos tener en nuestra clausula un "-x"
-#donde si x es 1, entonces -x es 0, en esta funcion hacemos esa conversion.
+#donde si x es 1, entonces -x es 0, en esta funcion hacemos esa sustitucion
 #    
 #    #split() puede usarse para pasar a lista una cadena
-#    #lo pasamos a lista para que sea mas facil la conversion / sustitucion que queremos hacer
+#    #lo pasamos a lista para que sea mas facil la sustitucion que queremos hacer
 #    lista = formula_con_val.split() 
 #
-#    #Recorremos y hacemos la conversion.
+#    #Recorremos y hacemos la sustitucion
 #    for i in range(len(lista)):
 #        if lista[i] == '-1':
 #            lista[i] = 0
@@ -88,6 +89,7 @@ def asignaValor(formula):
 #            lista[i] = 1
 #    
 #    return lista
+
 
 def variables_negativas(formula_con_val):
 #Auxiliar para hacer la FASE VERIFICADORA

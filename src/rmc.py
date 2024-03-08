@@ -18,15 +18,15 @@ vertices = archivo.readline()
 #Almacena la linea 2, que contiene el valor de k
 k = archivo.readline()
 
-#Almacenamos las aristas en una cadena
-aristas = ''
+#Almacenamos las aristas en una lista
+aristas = []
 
 #Para almacenar el numero de aristas
 num_ar = 0
 
 #Leyendo el archivo a partir de la linea 3
 for linea in archivo:
-    aristas += linea.strip('\n').replace(',', '') #va eliminando los \n y reemplazando las , por espacios
+    aristas.append(linea.strip('\n')) #va eliminando los \n
     num_ar += 1 
 
 
@@ -74,11 +74,24 @@ def trayectoria():
     return trayect
 
 
-def arreglo(trayectoria):
+def conversion(trayectoria):
+#Auxiliar para hacer la FASE VERIFICADORA, pasa la lista 
+#con la trayectoria propuesta ['2,3', '4,5', '3,1', '6,7', '2,5', '7,4', '4,10']
+#a una de esta forma ['2', '3', '4', '5', '3', '1', '6', '7', '2', '5', '7', '4', '4', '10']
+
+    aux = []
+
+    for i in trayectoria:
+        aux += i.split(',')
+
+    return aux
+
+
+def fase_verificadora(trayectoria):
 #FASE VERIFICADORA, compara los vertices de la trayectoria y verifica que la distancia de la trayectoria sea menor que k.
 
 #La logica para la fase verificadora es la siguiente, tenemos una trayectoria que nos dio la fase adivinadora
-#por ejemplo '5,1', '1,2', '2,6' que en el codigo la tendriamos como: trayectoria = ['5','1','1','2','2','6'] 
+#por ejemplo ['5,1', '1,2', '2,6'] que en el codigo la tendriamos como: trayectoria = ['5','1','1','2','2','6'] 
 #En general lo que queremos es comparar el segundo y tercer elemento de la lista, de ahi seguir con el cuarto y quinto
 #y asi sucesivamente. Por lo que el primer elemento no lo vamos a ocupar para esta comparacion y tampoco el ultimo, asi que
 #los eliminamos de la lista para facilitar la comparacion. 
@@ -135,18 +148,22 @@ def main():
         print(t)
 
         print('\nFase Verificadora')
-        print(arreglo(t))
+        fv = conversion(t)
+        print(fv)
+        print(fase_verificadora(fv))
     else: 
         print('Grafica invalida')
 
 
 #Ejemplo de una trayectoria que devuelve False en la fase verificadora
 f = ['8','9','7','8','6','7','7','4','5','3','10','9','3','6','1','2']
-#print(arreglo(f))
+#print(fase_verificadora(f))
+
 
 #Ejemplo de una trayectoria que devuelve True en la fase verificadora
 v = ['5','1','1','2','2','6']
-#print(arreglo(v))
+#print(fase_verificadora(v))
+
 
 main()
 
