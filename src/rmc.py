@@ -100,7 +100,7 @@ def fase_verificadora(trayectoria):
 #Una vez que se hizo la comparacion que ha resultado exitosa, eliminamos esos vertices de la lista y comparamos los que siguen.
 #Vamos comparando y eliminando de dos en dos, ese es el motivo de la condicion en el while.
 
-#Si la comparacion no resulta ser exitosa entonces salimos del while.
+#Si la comparacion no resulta ser exitosa entonces salimos del while y regresamos False
 
 #Ahora, en el aspecto de la distancia, nos piden que la distancia de la uv-trayectoria sea el numero de vertices sin contar u pero si v.
 #Como eliminamos v de la lista trayectoria para facilitar el conteo, jamas va a contarla por lo que inicializamos a la variable distancia = 1
@@ -126,14 +126,15 @@ def fase_verificadora(trayectoria):
             distancia += 2
 
         else:
-            #Si no es exitosa la comparacion no tiene caso seguir y nos salimos del while
-            break
+            #Si no es exitosa la comparacion no tiene caso seguir, salimos del while y devolvemos false
+            return False
 
+    #Si todas las comparaciones son exitosas.
     #Verifica la distancia una vez terminada la ejecucion del while
     if distancia < int(k) and distancia != 1:
-        return True     
-    else: 
-        return False
+        return True 
+    else:
+        return False    
  
 
 def main():
@@ -155,15 +156,13 @@ def main():
         print('Grafica invalida')
 
 
-#Ejemplo de una trayectoria que devuelve False en la fase verificadora
-f = ['8','9','7','8','6','7','7','4','5','3','10','9','3','6','1','2']
+#Ejemplo de una trayectoria que devuelve True en la fase verificadora
+f = ['5','1','1','2','8','9']
 #print(fase_verificadora(f))
-
 
 #Ejemplo de una trayectoria que devuelve True en la fase verificadora
 v = ['5','1','1','2','2','6']
 #print(fase_verificadora(v))
-
 
 main()
 
