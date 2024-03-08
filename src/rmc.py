@@ -96,16 +96,17 @@ def fase_verificadora(trayectoria):
 #y asi sucesivamente. Por lo que el primer elemento no lo vamos a ocupar para esta comparacion y tampoco el ultimo, asi que
 #los eliminamos de la lista para facilitar la comparacion. 
 
-#Si al comparar dos vertices resultan ser iguales, contamos esas dos aristas y por eso a distancia se le va sumando de dos en dos.
-#Una vez que se hizo la comparacion que ha resultado exitosa, eliminamos esos vertices de la lista y comparamos los que siguen.
+#Si al comparar dos vertices resultan ser iguales, se le suma dos al conteo de la distancia.
+
+#Una vez que se hizo una comparacion que ha resultado exitosa, eliminamos esos dos vertices comparados de la lista y comparamos los que siguen.
 #Vamos comparando y eliminando de dos en dos, ese es el motivo de la condicion en el while.
 
 #Si la comparacion no resulta ser exitosa entonces salimos del while y regresamos False
 
-#Ahora, en el aspecto de la distancia, nos piden que la distancia de la uv-trayectoria sea el numero de vertices sin contar u pero si v.
-#Como eliminamos v de la lista trayectoria para facilitar el conteo, jamas va a contarla por lo que inicializamos a la variable distancia = 1
+#Pero en caso de que solo haya habido comparaciones exitosas, entonces se han podido recorrer todos los vertices de la trayectoria y quedaria por verificar la distancia
 
-#Como puede pasar que nuestra primera comparacion no sea exitosa, distancia va a ser 1 entonces ese es el porque de esa parte en la condicion del if
+#Nos piden que la distancia de una uv-trayectoria sea el numero de vertices sin contar u pero si v.
+#Como eliminamos v de la lista trayectoria para facilitar el conteo, jamas va a contarla por lo que inicializamos a la variable distancia = 1
 
     #Se elimina el primer y el ultimo vector de la trayectoria
     trayectoria.remove(trayectoria[0])
@@ -131,7 +132,7 @@ def fase_verificadora(trayectoria):
 
     #Si todas las comparaciones son exitosas.
     #Verifica la distancia una vez terminada la ejecucion del while
-    if distancia < int(k) and distancia != 1:
+    if distancia < int(k):
         return True 
     else:
         return False    
@@ -160,7 +161,7 @@ def main():
 f = ['5','1','1','2','8','9']
 #print(fase_verificadora(f))
 
-#Ejemplo de una trayectoria que devuelve True en la fase verificadora
+#Ejemplo de una trayectoria que devuelve True en la fase verificadora, con k = 6
 v = ['5','1','1','2','2','6']
 #print(fase_verificadora(v))
 
