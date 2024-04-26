@@ -4,4 +4,5 @@
 	* Ruta Más Corta
 	* 3-SAT
 	
-2. Implementación de un algoritmo de aproximación para el problema Subset Sum
+2. Implementación de un algoritmo de aproximación para un problema 
+	* Subset Sum
