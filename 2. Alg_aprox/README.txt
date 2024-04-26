@@ -4,6 +4,11 @@ Alumna: Ana Valeria Deloya Andrade
 
 * Problema Subset Sum
 
+Este algoritmo se encuentra en el archivo "Subset_sum.py" dentro de la carpeta src.
+
+En el archivo de texto "Subset_sum_archivo.txt" se encuentra el ejemplar de entrada, la primer línea contiene al conjunto de enteros, mientras que en la segunda
+se encuentra el valor t de la suma.
+
 Para compilar y ejecutar:
 
-	python3 3sat.py 3sat_archivo.txt
+	python3 Subset_sum.py Subset_sum_archivo.txt
