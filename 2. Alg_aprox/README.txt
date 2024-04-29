@@ -4,7 +4,7 @@ Alumna: Ana Valeria Deloya Andrade
 
 * Problema Subset Sum
 
-Este algoritmo se encuentra en el archivo "Subset_sum.py" dentro de la carpeta src.
+Este algoritmo se encuentra en el archivo "Subset_sum.py".
 
 En el archivo de texto "Subset_sum_archivo.txt" se encuentra el ejemplar de entrada, la primer línea se encuentra el valor t de la suma, en la segunda se encuentra el valor para epsilon y en el tercer linea contiene al conjunto de enteros.
 
