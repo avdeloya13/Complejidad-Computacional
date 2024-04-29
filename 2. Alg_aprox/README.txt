@@ -6,8 +6,7 @@ Alumna: Ana Valeria Deloya Andrade
 
 Este algoritmo se encuentra en el archivo "Subset_sum.py" dentro de la carpeta src.
 
-En el archivo de texto "Subset_sum_archivo.txt" se encuentra el ejemplar de entrada, la primer línea contiene al conjunto de enteros, en la segunda
-se encuentra el valor t de la suma y en el tercer linea se encuentra el valor para epsilon.
+En el archivo de texto "Subset_sum_archivo.txt" se encuentra el ejemplar de entrada, la primer línea se encuentra el valor t de la suma, en la segunda se encuentra el valor para epsilon y en el tercer linea contiene al conjunto de enteros.
 
 Para compilar y ejecutar:
 
