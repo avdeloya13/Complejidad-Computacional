@@ -34,8 +34,9 @@ def verificacion():
 
     return False
 
-#El siguiente procedimiento recorta la lista L = (y1,y2,...,ym)
-#TRIM (RECORTAR) (L,δ)
+#Del libro
+#Recorta una lista L = (y1,y2,...,ym)
+#TRIM (L,δ)
 # let m be the length of L
 # L' = (y1)
 # last = y1
@@ -48,17 +49,27 @@ def verificacion():
 def TRIM(conjunto, delta):
 #Dado el conjunto de enteros y un valor para delta, la salida de la funcion es el conjunto recortado y ordenado.
 
-    conjunto_recortado = conjunto[0]
-    ultimo = conjunto[0]
     m = len(conjunto)
+    conjunto_recortado = [conjunto[0]]
+    ultimo = int(conjunto[0])
     i = 2
 
-    for i in m:
-        if conjunto[0] > ultimo*(1+delta)
+    for i in range(1,m):
+        if int(conjunto[i]) > ultimo*(1+delta):
             conjunto_recortado.append(conjunto[i])
-            ultimo = conjunto[i]
+            ultimo = int(conjunto[i])
 
     return conjunto_recortado
+
+#APPROX-SUBSET-SUM (S,t,ε)
+#1 n = |S|
+#2 L0 = (0)
+#3 for i = 1 to n
+#4 	Li = MERGE-LISTS(Li-1; Li-1 + xi)
+#5 	Li = TRIM(Li, ε/2n)
+#6 	remove from Li every element that is greater than t
+#7 let z* be the largest value in Ln
+#8 return z*
 
 
 def main():
@@ -71,8 +82,11 @@ def main():
         print('Conjunto: ')
         print(conjunto)
         print('Valor de la suma: ' + t + 'Epsilon: ' + epsilon)
-        #print(TRIM(conjunto, 0.05))
     else:
         print('EJEMPLAR DE INTRADA INVALIDO')
 
 main()
+
+print(TRIM(conjunto, 0.1))
+
+
