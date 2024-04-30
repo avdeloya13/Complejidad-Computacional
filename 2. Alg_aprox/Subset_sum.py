@@ -61,7 +61,7 @@ def MERGE_LISTS(lista1, lista2):
     l2 = len(lista2)
 
     fusion = []
-
+    
     i = 0
     j = 0
 
@@ -82,7 +82,7 @@ def MERGE_LISTS(lista1, lista2):
 
     while i < l1:
         fusion.append(lista1[i])
-        i += 1
+        i += 1 
 
     while j < l2:
         fusion.append(lista2[j])
@@ -101,10 +101,20 @@ def MERGE_LISTS(lista1, lista2):
 #7 let z* be the largest value in Ln
 #8 return z*
 
-#def APPROX_SUBSET_SUM(conjunto, t, epsilon):
-##
+def APPROX_SUBSET_SUM(conjunto, t, epsilon):
 #
-#    return 0
+    n = len(conjunto)
+    L0 = [0]
+    i = 1
+    
+    for i in range(1,n):
+        Li = MERGE_LISTS(Li-1, [elem + xi for elem in Li-1])
+        Li = TRIM(Li, epsilon / (2*n))
+
+
+    z = Ln[-1]  
+       
+    return z
 
 
 def main():
@@ -127,6 +137,10 @@ print(TRIM(conjunto, 0.1))
 L = [1, 2, 3, 5, 9]
 print([elem + 2 for elem in L])
 
-L1 = [1, 3, 5, 7, 9, 12, 13,22,67]
-L2 = [2, 4, 3,6, 8, 10, 11,14,17,19,78]
+L1 = [1, 2, 3, 5, 7, 9, 12, 13, 22, 67]
+L2 = [2, 3, 4,6, 8, 10,11, 14, 17, 19]
 print(MERGE_LISTS(L1,L2))
+
+#print('------------------------')
+#T = APPROX_SUBSET_SUM(conjunto, t, epsilon)
+#print(T)
