@@ -34,17 +34,6 @@ def verificacion():
 
     return False
 
-#Del libro
-#Recorta una lista L = (y1,y2,...,ym)
-#TRIM (L,δ)
-# let m be the length of L
-# L' = (y1)
-# last = y1
-# for i = 2 to m
-#     if yi > last*(1 + δ) 		 // yi ≥ last porque L está ordenada
-#         añadir yi al final de L'
-#         last = yi
-# return L'
 
 def TRIM(conjunto, delta):
 #Dado el conjunto de enteros y un valor para delta, la salida de la funcion es el conjunto recortado y ordenado.
@@ -61,6 +50,14 @@ def TRIM(conjunto, delta):
 
     return conjunto_recortado
 
+
+def MERGE_LISTS(lista1, lista2):
+#Devuelve una lista ordenada, siento esta la fusión de sus dos listas de entrada ordenadas,
+# con valores duplicados eliminados.
+
+    return True
+
+
 #APPROX-SUBSET-SUM (S,t,ε)
 #1 n = |S|
 #2 L0 = (0)
@@ -70,6 +67,11 @@ def TRIM(conjunto, delta):
 #6 	remove from Li every element that is greater than t
 #7 let z* be the largest value in Ln
 #8 return z*
+
+#def APPROX_SUBSET_SUM(conjunto, t, epsilon):
+##
+#
+#    return 0
 
 
 def main():
