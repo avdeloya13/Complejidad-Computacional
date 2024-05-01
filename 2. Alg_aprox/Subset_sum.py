@@ -59,36 +59,34 @@ def MERGE_LISTS(lista1, lista2):
 
     l1 = len(lista1)
     l2 = len(lista2)
-
-    fusion = []
     
     i = 0
     j = 0
 
-    while i < l1 and j < l2:
+    if l1 >= l2:
+
+        for i in range(1,l1):
+            if lista1[i] > lista2[j]:
+                lista1.insert(i,lista2[j])
+                j += 1
+                i += 1
+            else:
+                i += 1
         
-        if lista1[i] < lista2[j]:
-            fusion.append(lista1[i])
-            i += 1
+        return lista1
 
-        elif lista2[j] < lista1[i]:
-            fusion.append(lista2[j])
-            j += 1
-        
-        elif lista1[i] == lista2[j]:
-            fusion.append(lista1[i])
-            i += 1
-            j += 1
 
-    while i < l1:
-        fusion.append(lista1[i])
-        i += 1 
+    if l1 < l2:
 
-    while j < l2:
-        fusion.append(lista2[j])
-        j += 1
+        for i in range(1,l2):
+            if lista2[i] > lista1[j]:
+                lista2.insert(j,lista1[i])
+                i += 1
+                j += 0
+            else:
+                j += 1
 
-    return fusion
+        return lista2
 
 
 #APPROX-SUBSET-SUM (S,t,ε)
