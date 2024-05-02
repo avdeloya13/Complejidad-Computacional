@@ -23,7 +23,7 @@ conjunto = []
 
 for linea in archivo:
     #Utilizamos extend() para agregar elementos a la lista conjunto, pues utilizando append() se imprime una lista de la lista
-    conjunto.extend([int(elem) for elem in linea.split(',')])  
+    conjunto.extend([int(elem) for elem in linea.split(',')]) #Convierte a int los elementos del conjunto dado en el .txt y los agrega a la lista
 
 
 def verificacion():
@@ -153,22 +153,21 @@ def APPROX_SUBSET_SUM(conjunto, t, epsilon):
 #Devuelve un valor z cuyo valor esta dentro de un factor de 1 + ε de la solucion optima.
 
     n = len(conjunto)
-    L = [[0]]  
-    i = 1
+    L = [[0]]  #Lista de listas, iniciando con L0
+    #i = 1
 
     for i in range(1, n):
         Li = MERGE_LISTS(L[i-1], [elem + conjunto[i] for elem in L[i - 1]])
         Li = TRIM(Li, epsilon/(2*n))
         
-        #Remueve de Li cada elemento mayor que t
-        Li = [elem for elem in Li if elem <= t] 
-        L.append(Li)
+        Li = [elem for elem in Li if elem <= t] #Para no tener en Li elementos mayores que t
+        L.append(Li) #Se agrega Li a la lista de listas L
     
-    #Para obtener z, que es el valor mas grande de Ln
     Ln = L[-1] #Como L es una lista de listas, obtenemos la ultima lista con L[-1] y esa es nuestra Ln
-    z = max(Ln)
+    print(Ln)  #Para mostrar en terminal el subconjunto de numeros resultante
 
-    return z
+    z = Ln[-1] #Obtenemos z, que es el valor mas grande de Ln
+    return z  
 
 
 def main():
@@ -209,4 +208,3 @@ main()
 #L1 = [1, 2, 3, 5, 7, 9, 12, 13, 22, 67]
 #L2 = [2, 3, 4, 6, 8, 10,11, 14, 17, 19]
 #print(MERGE_LISTS(L1,L2))
-
