@@ -51,13 +51,14 @@ def TRIM(conjunto, delta):
 
     m = len(conjunto)
     conjunto_recortado = [conjunto[0]]
-    ultimo = int(conjunto[0])
-    i = 2
+    ultimo = conjunto[0]
+    #i = 2
 
     for i in range(1,m):
-        if int(conjunto[i]) > ultimo*(1+delta):
-            conjunto_recortado.append(conjunto[i])
-            ultimo = int(conjunto[i])
+
+        if conjunto[i] > ultimo*(1+delta):
+            conjunto_recortado.append(conjunto[i]) #Agregamos a conjunto_recortado
+            ultimo = conjunto[i]
 
     return conjunto_recortado
 
