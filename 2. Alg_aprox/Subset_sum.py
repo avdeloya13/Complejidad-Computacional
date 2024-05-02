@@ -151,17 +151,17 @@ def APPROX_SUBSET_SUM(conjunto, t, epsilon):
 #Devuelve un valor z cuyo valor esta dentro de un factor de 1 + ε de la solucion optima.
 
     n = len(conjunto)
-    L = [[0]]  #Lista de listas, iniciando con L0
+    L_de_L = [[0]]  #Lista de listas, iniciando con L0
     #i = 1
 
     for i in range(1, n):
-        Li = MERGE_LISTS(L[i-1], [elem + conjunto[i] for elem in L[i - 1]])
+        Li = MERGE_LISTS(L_de_L[i-1], [elem + conjunto[i] for elem in L_de_L[i - 1]])
         Li = TRIM(Li, epsilon/(2*n))
         
         Li = [elem for elem in Li if elem <= t] #Para no tener en Li elementos mayores que t
-        L.append(Li) #Se agrega Li a la lista de listas L
+        L_de_L.append(Li) #Se agrega Li a la lista de listas L_de_L
     
-    Ln = L[-1] #Como L es una lista de listas, obtenemos la ultima lista con L[-1] y esa es nuestra Ln
+    Ln = L_de_L[-1] #Como L_de_L es una lista de listas, obtenemos la ultima lista con L_de_L[-1] y esa es nuestra Ln
     print(Ln)  #Para mostrar en terminal el subconjunto de numeros resultante
 
     z = Ln[-1] #Obtenemos z, que es el valor mas grande de Ln
