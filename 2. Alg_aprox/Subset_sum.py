@@ -46,7 +46,6 @@ def verificacion():
 #7         last = yi
 #8 return L'
 
-
 def TRIM(conjunto, delta):
 #Dado el conjunto de enteros y un valor para delta, la salida de la funcion es el conjunto recortado y ordenado.
 
@@ -63,11 +62,11 @@ def TRIM(conjunto, delta):
     return conjunto_recortado
 
 
+#El pseudocodigo de esta funcion fue omitido en el libro.
+
 #def MERGE_LISTS(lista1, lista2):
 ##Devuelve una lista ordenada, siendo esta la fusión de sus dos listas de entrada ordenadas,
 ## con valores duplicados eliminados.
-#
-##El pseudocodigo de esta funcion fue omitido en el libro.
 #
 #    l1 = len(lista1)
 #    l2 = len(lista2)
@@ -146,7 +145,6 @@ def MERGE_LISTS(L1, L2):
 #6 	remueve de Li cada elemento mayor que t
 #7 sea z* el valor mas grande de Ln
 #8 return z*
-
 
 def APPROX_SUBSET_SUM(conjunto, t, epsilon):
 #Algoritmo de aproximacion en tiempo polinomial para el problema subset sum.
