@@ -55,10 +55,9 @@ def TRIM(conjunto, delta):
     #i = 2
 
     for i in range(1,m):
-
         if conjunto[i] > ultimo*(1+delta):
             conjunto_recortado.append(conjunto[i]) #Agregamos a conjunto_recortado
-            ultimo = conjunto[i]
+            ultimo = conjunto[i] #Establecemos nuevo valor para ultimo
 
     return conjunto_recortado
 
@@ -187,7 +186,7 @@ def main():
         print('Epsilon: ')
         print(epsilon)
         print('-------------------------')
-        print('El Algoritmo regresa: ')
+        print('EL ALGORITMO REGRESA ')
         AA = APPROX_SUBSET_SUM(conjunto, t, epsilon)
         print(AA)
         print('-------------------------')
