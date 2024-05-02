@@ -177,6 +177,7 @@ def main():
     verif = verificacion()
 
     if verif == True:
+        print('-------------------------')
         print('EJEMPLAR DE ENTRADA')
 
         print('Conjunto: ')
@@ -187,6 +188,11 @@ def main():
 
         print('Epsilon: ')
         print(epsilon)
+        print('-------------------------')
+        print('El Algoritmo regresa: ')
+        AA = APPROX_SUBSET_SUM(conjunto, t, epsilon)
+        print(AA)
+        print('-------------------------')
 
     else:
         print('EJEMPLAR DE INTRADA INVALIDO')
@@ -204,13 +210,3 @@ main()
 #L2 = [2, 3, 4, 6, 8, 10,11, 14, 17, 19]
 #print(MERGE_LISTS(L1,L2))
 
-print('-------------------------')
-val = 308
-ep = 0.40
-cjto = [104,102,201,101]
-
-T = APPROX_SUBSET_SUM(cjto, val, ep)
-print(T)
-
-S = APPROX_SUBSET_SUM(conjunto, t, epsilon)
-print(S)
