@@ -51,42 +51,77 @@ def TRIM(conjunto, delta):
     return conjunto_recortado
 
 
-def MERGE_LISTS(lista1, lista2):
-#Devuelve una lista ordenada, siendo esta la fusión de sus dos listas de entrada ordenadas,
-# con valores duplicados eliminados.
+#def MERGE_LISTS(lista1, lista2):
+##Devuelve una lista ordenada, siendo esta la fusión de sus dos listas de entrada ordenadas,
+## con valores duplicados eliminados.
+#
+##El pseudocodigo de esta funcion fue omitido en el libro.
+#
+#    l1 = len(lista1)
+#    l2 = len(lista2)
+#    
+#    i = 0
+#    j = 0
+#
+#    if l1 >= l2:
+#
+#        for i in range(1,l1):
+#
+#            if lista1[i] == lista2[j]:
+#                i += 1
+#                j += 1
+#
+#            if lista1[i] > lista2[j]:
+#                lista1.insert(i,lista2[j])
+#                j += 1
+#                i += 1
+#            else:
+#                i += 1
+#        
+#        return lista1
+#
+#
+#    if l1 < l2:
+#
+#        for i in range(1,l2):
+#
+#            if lista2[i] == lista1[j]:
+#                i += 1
+#                j += 1
+#
+#            if lista2[i] > lista1[j]:
+#                lista2.insert(j,lista1[i])
+#                i += 1
+#                j += 1
+#            else:
+#                j += 1
+#
+#        return lista2
 
-#El pseudocodigo de esta funcion fue omitido en el libro.
+def MERGE_LISTS(L1, L2):
 
-    l1 = len(lista1)
-    l2 = len(lista2)
-    
+    merged_list = []
     i = 0
     j = 0
 
-    if l1 >= l2:
-
-        for i in range(1,l1):
-            if lista1[i] > lista2[j]:
-                lista1.insert(i,lista2[j])
-                j += 1
-                i += 1
-            else:
-                i += 1
-        
-        return lista1
-
-
-    if l1 < l2:
-
-        for i in range(1,l2):
-            if lista2[i] > lista1[j]:
-                lista2.insert(j,lista1[i])
-                i += 1
-                j += 0
-            else:
-                j += 1
-
-        return lista2
+    while i < len(L1) and j < len(L2):
+        if L1[i] < L2[j]:
+            merged_list.append(L1[i])
+            i += 1
+        elif L1[i] > L2[j]:
+            merged_list.append(L2[j])
+            j += 1
+        else:
+            merged_list.append(L1[i])
+            i += 1
+            j += 1
+    while i < len(L1):
+        merged_list.append(L1[i])
+        i += 1
+    while j < len(L2):
+        merged_list.append(L2[j])
+        j += 1
+    return merged_list
 
 
 #APPROX-SUBSET-SUM (S,t,ε)
@@ -99,20 +134,33 @@ def MERGE_LISTS(lista1, lista2):
 #7 let z* be the largest value in Ln
 #8 return z*
 
-def APPROX_SUBSET_SUM(conjunto, t, epsilon):
+def APPROX_SUBSET_SUM(S, t, epsilon):
 #
-    n = len(conjunto)
-    L0 = [0]
-    i = 1
+    n = len(S)
+    L = [[0]]  # Inicializar L como una lista de listas donde L[i] representa Li
+
+    for i in range(1, n + 1):
+        Li = MERGE_LISTS(L[i-1], [x + int(S[i - 1]) for x in L[i - 1]])
+        Li = TRIM(Li, epsilon / (2 * n))
+        Li = [x for x in Li if x <= t]
+        L.append(Li)
     
-    for i in range(1,n):
-        Li = MERGE_LISTS(Li-1, [elem + xi for elem in Li-1])
-        Li = TRIM(Li, epsilon / (2*n))
+    # Encontrar el máximo en Ln
+    max_in_Ln = max(L[-1])
+    return max_in_Ln
 
-
-    z = Ln[-1]  
-       
-    return z
+#    n = len(conjunto)
+#    L0 = [0]
+#    i = 1
+#    
+#    for i in range(1,n):
+#        Li = MERGE_LISTS(Li-1, [elem + xi for elem in Li-1])
+#        Li = TRIM(Li, epsilon / (2*n))
+#
+#
+#    z = Ln[-1]  
+#       
+#    return z
 
 
 def main():
@@ -130,15 +178,19 @@ def main():
 
 main()
 
-print(TRIM(conjunto, 0.1))
+#print(TRIM(conjunto, 0.1))
 
-L = [1, 2, 3, 5, 9]
-print([elem + 2 for elem in L])
+#L = [1, 2, 3, 5, 9]
+#print([elem + 2 for elem in L])
 
-L1 = [1, 2, 3, 5, 7, 9, 12, 13, 22, 67]
-L2 = [2, 3, 4,6, 8, 10,11, 14, 17, 19]
-print(MERGE_LISTS(L1,L2))
+#L1 = [1, 2, 3, 5, 7, 9, 12, 13, 22, 67]
+#L2 = [2, 3, 4, 6, 8, 10,11, 14, 17, 19]
+#print(MERGE_LISTS(L1,L2))
 
-#print('------------------------')
-#T = APPROX_SUBSET_SUM(conjunto, t, epsilon)
-#print(T)
+print('-------------------------')
+val = 308
+ep = 0.40
+cjto = [104,102,201,101]
+
+T = APPROX_SUBSET_SUM(cjto, val, ep)
+print(T)
