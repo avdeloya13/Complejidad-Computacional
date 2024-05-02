@@ -13,26 +13,38 @@ archivo = sys.argv[1]
 archivo = open(archivo)
 
 #Almacena la linea 1, que contiene el valor de la suma
-t = archivo.readline()
+t = int(archivo.readline())
 
 #Almacena la linea 2, que contiene el valor de epsilon
-epsilon = archivo.readline()
+epsilon = float(archivo.readline())
 
 #Almacena la linea 3, que contiene el conjunto
 conjunto = []
 
 for linea in archivo:
-    #Utilizamos extend() para agregar elementos a la lista conjunto
-    conjunto.extend(linea.split(','))
+    #Utilizamos extend() para agregar elementos a la lista conjunto, pues utilizando append() se imprime una lista de la lista
+    conjunto.extend([int(elem) for elem in linea.split(',')])  
 
 
 def verificacion():
 #Funcion que verifica que epsilon se encuentre dentro de los parametros establecidos
 # con 0 < epsilon < 1
-    if 0 < float(epsilon) and float(epsilon) < 1:
+    if 0 < epsilon and epsilon < 1:
         return True
 
     return False
+
+
+# ----------- Pseudocodigo del libro --------------
+#TRIM (L,δ)
+#1 let m be the length of L
+#2 L' = (y1)
+#3 last = y1
+#4 for i = 2 to m
+#5     if yi > last*(1 + δ) 		 // yi ≥ last porque L está ordenada
+#6         añadir yi al final de L'
+#7         last = yi
+#8 return L'
 
 
 def TRIM(conjunto, delta):
@@ -124,43 +136,39 @@ def MERGE_LISTS(L1, L2):
     return merged_list
 
 
+# ----------- Pseudocodigo del libro --------------
 #APPROX-SUBSET-SUM (S,t,ε)
 #1 n = |S|
 #2 L0 = (0)
 #3 for i = 1 to n
 #4 	Li = MERGE-LISTS(Li-1; Li-1 + xi)
 #5 	Li = TRIM(Li, ε/2n)
-#6 	remove from Li every element that is greater than t
-#7 let z* be the largest value in Ln
+#6 	remueve de Li cada elemento mayor que t
+#7 sea z* el valor mas grande de Ln
 #8 return z*
 
-def APPROX_SUBSET_SUM(S, t, epsilon):
-#
-    n = len(S)
-    L = [[0]]  # Inicializar L como una lista de listas donde L[i] representa Li
 
-    for i in range(1, n + 1):
-        Li = MERGE_LISTS(L[i-1], [x + int(S[i - 1]) for x in L[i - 1]])
-        Li = TRIM(Li, epsilon / (2 * n))
-        Li = [x for x in Li if x <= t]
+def APPROX_SUBSET_SUM(conjunto, t, epsilon):
+#Algoritmo de aproximacion en tiempo polinomial para el problema subset sum.
+#Devuelve un valor z cuyo valor esta dentro de un factor de 1 + ε de la solucion optima.
+
+    n = len(conjunto)
+    L = [[0]]  
+    i = 1
+
+    for i in range(1, n):
+        Li = MERGE_LISTS(L[i-1], [elem + conjunto[i] for elem in L[i - 1]])
+        Li = TRIM(Li, epsilon/(2*n))
+        
+        #Remueve de Li cada elemento mayor que t
+        Li = [elem for elem in Li if elem <= t] 
         L.append(Li)
     
-    # Encontrar el máximo en Ln
-    max_in_Ln = max(L[-1])
-    return max_in_Ln
+    #Para obtener z, que es el valor mas grande de Ln
+    Ln = L[-1] #Como L es una lista de listas, obtenemos la ultima lista con L[-1] y esa es nuestra Ln
+    z = max(Ln)
 
-#    n = len(conjunto)
-#    L0 = [0]
-#    i = 1
-#    
-#    for i in range(1,n):
-#        Li = MERGE_LISTS(Li-1, [elem + xi for elem in Li-1])
-#        Li = TRIM(Li, epsilon / (2*n))
-#
-#
-#    z = Ln[-1]  
-#       
-#    return z
+    return z
 
 
 def main():
@@ -170,18 +178,27 @@ def main():
 
     if verif == True:
         print('EJEMPLAR DE ENTRADA')
+
         print('Conjunto: ')
         print(conjunto)
-        print('Valor de la suma: ' + t + 'Epsilon: ' + epsilon)
+
+        print('Valor de la suma: ')
+        print(t) 
+
+        print('Epsilon: ')
+        print(epsilon)
+
     else:
         print('EJEMPLAR DE INTRADA INVALIDO')
 
 main()
 
-#print(TRIM(conjunto, 0.1))
 
+#Esta parte fue para probar como hacer en python lo que se nos explica en el libro,
+# sumar un entero x a una lista de enteros. Si L = (1, 2, 3, 5, 9), entonces L + 2 = (3, 4, 5, 7, 11)
 #L = [1, 2, 3, 5, 9]
 #print([elem + 2 for elem in L])
+#Esto es utilizado para la funcion APPROX_SUBSET_SUM, linea AGREGAR LINEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 #L1 = [1, 2, 3, 5, 7, 9, 12, 13, 22, 67]
 #L2 = [2, 3, 4, 6, 8, 10,11, 14, 17, 19]
@@ -194,3 +211,6 @@ cjto = [104,102,201,101]
 
 T = APPROX_SUBSET_SUM(cjto, val, ep)
 print(T)
+
+S = APPROX_SUBSET_SUM(conjunto, t, epsilon)
+print(S)
