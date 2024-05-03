@@ -78,13 +78,13 @@ def MERGE_LISTS(lista1, lista2):
         listas_fusionadas.append(i) #Agregamos el elemento i de lista1
 
     #Ahora los elementos de la segunda lista a listas_fusionadas
-    k = 0 
+    lf = 0 
     for j in lista2:
-        while k < l and listas_fusionadas[k] < j:
-            k += 1
+        while lf < l and listas_fusionadas[lf] < j:
+            lf += 1
 
-        listas_fusionadas.insert(k, j) #Agregamos el elemento j de lista2
-        k += 1
+        listas_fusionadas.insert(lf, j) #Agregamos el elemento j de lista2
+        lf += 1
 
     #Eliminamos los elementos duplicados, no_dup no tiene elementos duplicados pero usar set() lo hizo conjunto
     no_dup = set(listas_fusionadas)
@@ -165,3 +165,7 @@ main()
 L1 = [1, 2, 3, 5, 7, 9, 12, 13, 22, 67, 68,70]
 L2 = [2, 3, 4, 6, 8, 10,11, 14, 17, 19,69]
 print(MERGE_LISTS(L1,L2))
+
+L3 = [1, 2, 3, 4, 5]
+L4 = [4, 5, 6, 7, 8]
+print(MERGE_LISTS(L3,L4))
