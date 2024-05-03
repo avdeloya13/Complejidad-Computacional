@@ -75,18 +75,18 @@ def MERGE_LISTS(lista1, lista2):
 
     #Comenzamos por agregar los elementos de la primer lista a listas_fusionadas
     for i in lista1:
-        listas_fusionadas.append(i)
+        listas_fusionadas.append(i) #Agregamos el elemento i de lista1
 
-    #Agregamos ahora los elementos de la segunda lista a listas_fusionadas
+    #Ahora los elementos de la segunda lista a listas_fusionadas
     k = 0 
-    for j in range(l2):
-        while k < l and listas_fusionadas[k] < lista2[j]:
+    for j in lista2:
+        while k < l and listas_fusionadas[k] < j:
             k += 1
 
-        listas_fusionadas.insert(k, lista2[j])
+        listas_fusionadas.insert(k, j) #Agregamos el elemento j de lista2
         k += 1
 
-    #Eliminamos los elementos duplicados, no_dup no tiene elementos duplicados pero es un conjunto al usar set()
+    #Eliminamos los elementos duplicados, no_dup no tiene elementos duplicados pero usar set() lo hizo conjunto
     no_dup = set(listas_fusionadas)
     
     return list(no_dup) #Convertimos de nuevo a lista y regresamos no_dup
