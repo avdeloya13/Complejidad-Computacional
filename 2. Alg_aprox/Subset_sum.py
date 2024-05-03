@@ -162,10 +162,10 @@ main()
 
 
 #Para probar la funcion MERGE_LISTS
-L1 = [1, 2, 3, 5, 7, 9, 12, 13, 22, 67, 68,70]
-L2 = [2, 3, 4, 6, 8, 10,11, 14, 17, 19,69]
-print(MERGE_LISTS(L1,L2))
+#L1 = [1, 2, 3, 5, 7, 9, 12, 13, 22, 67, 68,70]
+#L2 = [2, 3, 4, 6, 8, 10,11, 14, 17, 19,69]
+#print(MERGE_LISTS(L1,L2))
 
-L3 = [1, 2, 3, 4, 5]
-L4 = [4, 5, 6, 7, 8]
-print(MERGE_LISTS(L3,L4))
+#L3 = [1, 2, 3, 4, 5]
+#L4 = [4, 5, 6, 7, 8]
+#print(MERGE_LISTS(L3,L4))
