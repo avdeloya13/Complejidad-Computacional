@@ -26,7 +26,7 @@ for linea in archivo:
     conjunto.extend([int(elem) for elem in linea.split(',')]) #Convierte a int los elementos del conjunto dado en el .txt y los agrega a la lista
 
 
-def verificacion():
+def VERIFICA():
 #Funcion que verifica que epsilon se encuentre dentro de los parametros establecidos
 # con 0 < epsilon < 1
     if 0 < epsilon and epsilon < 1:
@@ -56,83 +56,40 @@ def TRIM(conjunto, delta):
 
     for i in range(1,m):
         if conjunto[i] > ultimo*(1+delta):
-            conjunto_recortado.append(conjunto[i]) #Agregamos a conjunto_recortado
+            conjunto_recortado.append(conjunto[i]) #Agregamos elemento a conjunto_recortado
             ultimo = conjunto[i] #Establecemos nuevo valor para ultimo
 
     return conjunto_recortado
 
 
-#El pseudocodigo de esta funcion fue omitido en el libro.
+#----------- El pseudocodigo de esta funcion fue omitido en el libro --------------
 
-#def MERGE_LISTS(lista1, lista2):
-##Devuelve una lista ordenada, siendo esta la fusión de sus dos listas de entrada ordenadas,
-## con valores duplicados eliminados.
-#
-#    l1 = len(lista1)
-#    l2 = len(lista2)
-#    
-#    i = 0
-#    j = 0
-#
-#    if l1 >= l2:
-#
-#        for i in range(1,l1):
-#
-#            if lista1[i] == lista2[j]:
-#                i += 1
-#                j += 1
-#
-#            if lista1[i] > lista2[j]:
-#                lista1.insert(i,lista2[j])
-#                j += 1
-#                i += 1
-#            else:
-#                i += 1
-#        
-#        return lista1
-#
-#
-#    if l1 < l2:
-#
-#        for i in range(1,l2):
-#
-#            if lista2[i] == lista1[j]:
-#                i += 1
-#                j += 1
-#
-#            if lista2[i] > lista1[j]:
-#                lista2.insert(j,lista1[i])
-#                i += 1
-#                j += 1
-#            else:
-#                j += 1
-#
-#        return lista2
+def MERGE_LISTS(lista1, lista2):
+#Devuelve una lista ordenada, siendo esta la fusión de sus dos listas de entrada ordenadas,
+# con valores duplicados eliminados.
 
-def MERGE_LISTS(L1, L2):
+    listas_fusionadas = []
 
-    merged_list = []
-    i = 0
-    j = 0
+    l = len(listas_fusionadas)
+    l2 = len(lista2)
 
-    while i < len(L1) and j < len(L2):
-        if L1[i] < L2[j]:
-            merged_list.append(L1[i])
-            i += 1
-        elif L1[i] > L2[j]:
-            merged_list.append(L2[j])
-            j += 1
-        else:
-            merged_list.append(L1[i])
-            i += 1
-            j += 1
-    while i < len(L1):
-        merged_list.append(L1[i])
-        i += 1
-    while j < len(L2):
-        merged_list.append(L2[j])
-        j += 1
-    return merged_list
+    #Comenzamos por agregar los elementos de la primer lista a listas_fusionadas
+    for i in lista1:
+        listas_fusionadas.append(i)
+
+    #Agregamos ahora los elementos de la segunda lista a listas_fusionadas
+    k = 0 
+    for j in range(l2):
+        while k < l and listas_fusionadas[k] < lista2[j]:
+            k += 1
+
+        listas_fusionadas.insert(k, lista2[j])
+        k += 1
+
+    #Eliminamos los elementos duplicados, no_dup no tiene elementos duplicados pero es un conjunto al usar set()
+    no_dup = set(listas_fusionadas)
+    
+    return list(no_dup) #Convertimos de nuevo a lista y regresamos no_dup
 
 
 # ----------- Pseudocodigo del libro --------------
@@ -151,17 +108,17 @@ def APPROX_SUBSET_SUM(conjunto, t, epsilon):
 #Devuelve un valor z cuyo valor esta dentro de un factor de 1 + ε de la solucion optima.
 
     n = len(conjunto)
-    L_de_L = [[0]]  #Lista de listas, iniciando con L0
+    Listas = [[0]]  #Lista de listas, iniciando con L0
     #i = 1
 
     for i in range(1, n):
-        Li = MERGE_LISTS(L_de_L[i-1], [elem + conjunto[i] for elem in L_de_L[i - 1]])
+        Li = MERGE_LISTS(Listas[i-1], [elem + conjunto[i] for elem in Listas[i - 1]])
         Li = TRIM(Li, epsilon/(2*n))
         
         Li = [elem for elem in Li if elem <= t] #Para no tener en Li elementos mayores que t
-        L_de_L.append(Li) #Se agrega Li a la lista de listas L_de_L
+        Listas.append(Li) #Se agrega Li a la lista de listas Listas
     
-    Ln = L_de_L[-1] #Como L_de_L es una lista de listas, obtenemos la ultima lista con L_de_L[-1] y esa es nuestra Ln
+    Ln = Listas[-1] #Como "Listas" es una lista de listas, obtenemos la ultima lista con Listas[-1] y esa es nuestra Ln
     print(Ln)  #Para mostrar en terminal el subconjunto de numeros resultante
 
     z = Ln[-1] #Obtenemos z, que es el valor mas grande de Ln
@@ -171,7 +128,7 @@ def APPROX_SUBSET_SUM(conjunto, t, epsilon):
 def main():
 #Funcion main para mandar a llamar todo, ordenado.
 
-    verif = verificacion()
+    verif = VERIFICA()
 
     if verif == True:
         print('-------------------------')
@@ -201,8 +158,10 @@ main()
 # sumar un entero x a una lista de enteros. Si L = (1, 2, 3, 5, 9), entonces L + 2 = (3, 4, 5, 7, 11)
 #L = [1, 2, 3, 5, 9]
 #print([elem + 2 for elem in L])
-#Esto es utilizado para la funcion APPROX_SUBSET_SUM, linea AGREGAR LINEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+#Esto es utilizado para la funcion APPROX_SUBSET_SUM, linea 115
 
-#L1 = [1, 2, 3, 5, 7, 9, 12, 13, 22, 67]
-#L2 = [2, 3, 4, 6, 8, 10,11, 14, 17, 19]
-#print(MERGE_LISTS(L1,L2))
+
+#Para probar la funcion MERGE_LISTS
+L1 = [1, 2, 3, 5, 7, 9, 12, 13, 22, 67, 68,70]
+L2 = [2, 3, 4, 6, 8, 10,11, 14, 17, 19,69]
+print(MERGE_LISTS(L1,L2))
