@@ -71,7 +71,6 @@ def MERGE_LISTS(lista1, lista2):
     listas_fusionadas = []
 
     l = len(listas_fusionadas)
-    l2 = len(lista2)
 
     #Comenzamos por agregar los elementos de la primer lista a listas_fusionadas
     for i in lista1:
