@@ -1,5 +1,4 @@
 import sys
-import random
 
 """
 Meta Heuristicas
