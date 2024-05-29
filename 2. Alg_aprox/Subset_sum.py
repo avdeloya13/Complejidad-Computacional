@@ -41,7 +41,7 @@ def VERIFICA():
 #2 L' = (y1)
 #3 last = y1
 #4 for i = 2 to m
-#5     if yi > last*(1 + δ) 		 // yi ≥ last porque L está ordenada
+#5     if yi > last*(1 + δ) 		 // yi ≥ last porque L esta ordenada
 #6         añadir yi al final de L'
 #7         last = yi
 #8 return L'
@@ -65,8 +65,11 @@ def TRIM(conjunto, delta):
 #----------- El pseudocodigo de esta funcion fue omitido en el libro --------------
 
 def MERGE_LISTS(lista1, lista2):
-#Devuelve una lista ordenada, siendo esta la fusión de sus dos listas de entrada ordenadas,
-# con valores duplicados eliminados.
+#En base a las especificaciones del libro acerca de lo que hace y su complejidad, fue implementada la siguiente funcion.
+
+#Devuelve una lista ordenada, siendo esta la fusion de sus dos listas de entrada ordenadas,
+# con valores duplicados eliminados. 
+#Cuenta con una complejidad de O(lista1 + lista2) pues son recorridas ambas listas.
 
     listas_fusionadas = []
 
@@ -143,7 +146,9 @@ def main():
         print(epsilon)
         print('-------------------------')
         print('EL ALGORITMO REGRESA ')
+        print('Subconjunto: ')
         AA = APPROX_SUBSET_SUM(conjunto, t, epsilon)
+        print('Valor resultante: ')
         print(AA)
         print('-------------------------')
 
@@ -157,7 +162,7 @@ main()
 # sumar un entero x a una lista de enteros. Si L = (1, 2, 3, 5, 9), entonces L + 2 = (3, 4, 5, 7, 11)
 #L = [1, 2, 3, 5, 9]
 #print([elem + 2 for elem in L])
-#Esto es utilizado para la funcion APPROX_SUBSET_SUM, linea 115
+#Esto es utilizado para la funcion APPROX_SUBSET_SUM, linea 114
 
 
 #Para probar la funcion MERGE_LISTS
