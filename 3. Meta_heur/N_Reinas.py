@@ -9,7 +9,7 @@ Author: Ana Valeria Deloya Andrade
 
 archivo = sys.argv[1]
 #Abrimos el archivo que contiene al ejemplar
-archivo = open(archivo)
+archivo = open('Ejemplares/' + archivo)
 
 
 def main():
