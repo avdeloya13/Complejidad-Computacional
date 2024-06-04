@@ -6,6 +6,11 @@ Alumna: Ana Valeria Deloya Andrade
 
 Este algoritmo se encuentra en el archivo "N_Reinas.py".
 
+El contenido de los archivos ".txt" es el siguiente: 
+
+				* En la primera línea se encuentra el costo, que sería el número de colisiones en la configuración inicial
+				* En la segunda línea viene el número total de reinas 
+				* Finalmente, se encuentra la configuración inicial en las líneas posteriores
 
 Para compilar y ejecutar:
 
@@ -15,5 +20,5 @@ En la parte de "archivo.txt" se coloca el nombre del archivo a ejecutar de los c
 
 Ejemplo: 
 
-	python3 N_Reinas.py N_Reinas_archivo.txt
+	python3 N_Reinas.py 8_Reinas_archivo.txt
 

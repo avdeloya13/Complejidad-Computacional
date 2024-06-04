@@ -14,6 +14,9 @@ archivo = open('Ejemplares/' + archivo)
 #Almacena la linea 1, que contiene el costo
 costo = archivo.readline()
 
+#Almacena la linea 2, que contiene el numero de reinas
+reinas = int(archivo.readline())
+
 #Para almacenar el tablero/configuracion inicial
 tablero = []
 
@@ -26,9 +29,10 @@ def columnas():
 #Funcion que cuenta la cantidad de reinas que se encuentran en cada fila en la configuracion inicial.
 # Debido a que las reinas no pueden ir en una misma fila, a cada reina le corresponde una fila que se le asocia.
 
-	#La configuración del tablero se describe con el vector R.
-	vector_R = []
+	#La configuracion del tablero se describe con el vector R.
+	vector_R = [0] * reinas
 
+	#----------------
 	for fila in tablero:
     	 if '1' in fila:
     		 apariciones = [i for i, x in enumerate(fila) if x == '1']
@@ -36,7 +40,7 @@ def columnas():
 
 def diagonales():
 #Siendo que a cada reina se le asigna una fila y una columna que no comparte con otra en la funcion anterior, 
-# no existen colisiones entre reinas por filas o columnas; entonces debe analizarse la configuración para las diagonales.
+# no existen colisiones entre reinas por filas o columnas; entonces debe analizarse la configuracion para las diagonales.
 
 	return 0
 
